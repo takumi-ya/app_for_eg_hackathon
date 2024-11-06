@@ -1,12 +1,14 @@
-"use client";
+'use client';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
+import { useUser } from '../../context/UserContext';
 
 export default function LoginPage() {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const router = useRouter();
+  const { setUsername } = useUser();
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -18,7 +20,7 @@ export default function LoginPage() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ email, password }),
       });
 
       if (!response.ok) {
@@ -44,16 +46,16 @@ export default function LoginPage() {
       <h2 className="text-2xl mb-4">ログイン</h2>
       {error && <p className="text-red-500 mb-4">{error}</p>}
       <div className="mb-4">
-        <label className="block text-sm font-bold mb-2" htmlFor="username">
-          ユーザー名
+        <label className="block text-sm font-bold mb-2" htmlFor="email">
+          メールアドレス
         </label>
         <input
           className="w-full p-2 border border-gray-300 rounded"
           type="text"
-          id="username"
-          name="username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          id="email"
+          name="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           required
         />
       </div>
