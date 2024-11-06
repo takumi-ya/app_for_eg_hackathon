@@ -2,18 +2,23 @@
 import React, { useState } from 'react';
 import { useUser } from '../../context/UserContext';
 
+import Box from '@mui/material/Box';
+import BottomNavigation from '@mui/material/BottomNavigation';
+import BottomNavigationAction from '@mui/material/BottomNavigationAction';
+import DangerousIcon from '@mui/icons-material/Dangerous';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+
+import NGFoodList from '../../components/NGFoodList';
+import FavoriteList from '../../components/FavoriteList';
+
 
 export default function UserPage() {
 
   const { username } = useUser();
-  const [activeTab, setActiveTab] = useState('tab1');
-
-  const handleTabClick = (tab: string) => {
-    setActiveTab(tab);
-  };
+  const [value, setValue] = React.useState(0);
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center">
+    <div id="userpage" className="min-h-screen flex flex-col items-center justify-center">
       <h1 id="page-title" className="text-2xl">ユーザーページ</h1>
       <div id="user-icon" className="mb-4">
           {/* https://heroicons.com/ */}
@@ -22,47 +27,38 @@ export default function UserPage() {
         </svg>
       </div>
       <div id="username" className="mb-4">
-        <h1 className="text-2xl">{username}</h1>
+        <h1 className="text-1xl">{username === null ?  username : 'ログイン'}</h1>
       </div>
 
-      <div className="w-full max-w-md">
-        <div className="flex border-b">
-          <button
-            id="NGlist-tab"
-            className={`flex-1 py-2 px-4 text-center ${activeTab === 'NGlist-tab' ? 'border-b-2 border-blue-500' : ''}`}
-            onClick={() => handleTabClick('NGlist-tab')}
-          >
-            NG Food list
-          </button>
-          <button
-            id="Favoritelist-tab"
-            className={`flex-1 py-2 px-4 text-center ${activeTab === 'Favoritelist-tab' ? 'border-b-2 border-blue-500' : ''}`}
-            onClick={() => handleTabClick('Favoritelist-tab')}
-          >
-            Favorite shop list
-          </button>
-        </div>
-        <div className="p-4">
-          {activeTab === "NGlist-tab" && <div id="NGFoodList">
-            <h2>NG Food List</h2>
-            </div>}
-          {activeTab === "Favoritelist-tab" && <div id="FavoriteShop">
-            <h3>Favorite list</h3>
-            </div>}
-        </div>
+      <div className="mb-4">
+        <Box sx={{ width: 500 }}>
+        {value === 0 && <NGFoodList />}
+        {value === 1 && <FavoriteList />}
+        <BottomNavigation
+          showLabels
+          value={value}
+          onChange={(event, newValue) => {
+            setValue(newValue);
+          }}
+        >
+          <BottomNavigationAction label="NGfood" icon={<DangerousIcon />} />
+          <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
+        </BottomNavigation>
+        </Box>
       </div>
+      
 
-      <div>
+      {/* <div id="logout">
         <button
           id="logout-button"
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           onClick={() => {
-            //
+            
           }}
         >
           ログアウト
-        </button>  
-      </div>
+        </button>
+      </div> */}
     </div>
   );
 }

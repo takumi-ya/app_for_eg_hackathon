@@ -4,8 +4,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (req.method === 'POST') {
     console.log('リクエスト受信:', req.body);
     
-    const { username, password } = req.body;
-    if (username === 'apple' && password === 'swift') {
+    const { email, password } = req.body;
+    if (email === 'apple' && password === 'swift') {
       res.status(200).json({ message: 'ログイン成功' });
     } else {
       res.status(401).json({ message: 'ユーザー名またはパスワードが間違っています' });
