@@ -34,7 +34,7 @@ const FavoriteList = () => {
   };
 
   return (
-    <div id='Favoritelist-content'>
+    <div id='Favoritelist-content' className="w-72 max-w-md">
       <h2 className='text-xl mb-4'>Favorite Shop List</h2>
       <ul>
         {favorites.map((shop, index) => (

@@ -44,7 +44,7 @@ const NGList = () => {
   };
 
   return (
-    <div id='NGlist-content'>
+    <div id='NGlist-content' className='w-72 max-w-md'>
       <h2 className='text-xl mb-4'>NG Food List</h2>
       <div className='mb-4'>
         <input
