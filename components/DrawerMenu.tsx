@@ -2,6 +2,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import { Box, Drawer } from '@mui/material';
 import { styled } from '@mui/system';
 import React from 'react';
+import UserPage from '@/components/UserPage';
 
 const MenuContainer = styled(Box)(({ theme }) => ({
   width: '100%',
@@ -33,10 +34,10 @@ const MenuDrawer: React.FC<MenuDrawerProps> = ({ isDrawerOpen, toggleDrawer }) =
               justifyContent: 'center',
             }}
           >
-            <PersonIcon style={{ fontSize: 80 }} />
+            <PersonIcon style={{ fontSize: 50 }} />
           </Box>
         </Box>
-        {/* メニューをここに配置 */}
+        <UserPage />
       </MenuContainer>
     </Drawer>
   );

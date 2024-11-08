@@ -1,5 +1,6 @@
 "use client";
 import { useState, ChangeEvent } from "react";
+import { useRouter } from 'next/navigation';
 
 export default function Home() {
   const [image, setImage] = useState<File | null>(null);

@@ -30,7 +30,7 @@ export default function LoginPage() {
       const data = await response.json();
       console.log('ログイン成功:', data);
       setUsername(data.user.username);
-      router.push('/user');
+      router.push('/');
 
     } catch (error) {
       if (error instanceof Error) {
@@ -42,7 +42,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className='min-h-screen flex items-center justify-center'>
+    <div className='flex justify-center'>
     <form className='bg-white p-6 rounded shadow-md' onSubmit={handleSubmit}>
       <h2 className='text-2xl mb-4'>ログイン</h2>
       {error && <p className='text-red-500 mb-4'>{error}</p>}
