@@ -42,41 +42,41 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
-    <form className="bg-white p-6 rounded shadow-md" onSubmit={handleSubmit}>
-      <h2 className="text-2xl mb-4">ログイン</h2>
-      {error && <p className="text-red-500 mb-4">{error}</p>}
-      <div className="mb-4">
-        <label className="block text-sm font-bold mb-2" htmlFor="email">
+    <div className='min-h-screen flex items-center justify-center'>
+    <form className='bg-white p-6 rounded shadow-md' onSubmit={handleSubmit}>
+      <h2 className='text-2xl mb-4'>ログイン</h2>
+      {error && <p className='text-red-500 mb-4'>{error}</p>}
+      <div className='mb-4'>
+        <label className='block text-sm font-bold mb-2' htmlFor='email'>
           メールアドレス
         </label>
         <input
-          className="w-full p-2 border border-gray-300 rounded"
-          type="text"
-          id="email"
-          name="email"
+          className='w-full p-2 border border-gray-300 rounded'
+          type='text'
+          id='email'
+          name='email'
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
       </div>
-      <div className="mb-4">
-        <label className="block text-sm font-bold mb-2" htmlFor="password">
+      <div className='mb-4'>
+        <label className='block text-sm font-bold mb-2' htmlFor='password'>
           パスワード
         </label>
         <input
-          className="w-full p-2 border border-gray-300 rounded"
-          type="password"
-          id="password"
-          name="password"
+          className='w-full p-2 border border-gray-300 rounded'
+          type='password'
+          id='password'
+          name='password'
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
       </div>
       <button
-        className="w-full bg-blue-500 text-white p-2 rounded"
-        type="submit"
+        className='w-full bg-blue-500 text-white p-2 rounded'
+        type='submit'
       >
         ログイン
       </button>

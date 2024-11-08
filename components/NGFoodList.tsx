@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import React, { useState } from 'react';
 
 const NGList = () => {
@@ -42,30 +42,30 @@ const NGList = () => {
   };
 
   return (
-    <div id="NGlist-content">
-      <h2 className="text-xl mb-4">NG Food List</h2>
-      <div className="mb-4">
+    <div id='NGlist-content'>
+      <h2 className='text-xl mb-4'>NG Food List</h2>
+      <div className='mb-4'>
         <input
-          type="text"
+          type='text'
           value={newItem}
           onChange={(e) => setNewItem(e.target.value)}
-          className="border p-2 rounded mr-2"
-          placeholder="Add new item"
+          className='border p-2 rounded mr-2'
+          placeholder='Add new item'
         />
         <button
           onClick={handleAddItem}
-          className="bg-blue-500 text-white p-2 rounded"
+          className='bg-blue-500 text-white p-2 rounded'
         >
           + Add
         </button>
       </div>
       <ul>
         {items.map((item, index) => (
-          <li key={index} className="flex justify-between items-center mb-2">
+          <li key={index} className='flex justify-between items-center mb-2'>
             {item}
             <button
               onClick={() => handleDeleteItem(index)}
-              className="bg-red-500 text-white p-1 rounded"
+              className='bg-red-500 text-white p-1 rounded'
             >
               Delete
             </button>

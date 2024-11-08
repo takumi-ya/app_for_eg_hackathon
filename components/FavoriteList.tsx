@@ -34,14 +34,14 @@ const FavoriteList = () => {
   };
 
   return (
-    <div id="Favoritelist-content">
-      <h2 className="text-xl mb-4">Favorite Shop List</h2>
+    <div id='Favoritelist-content'>
+      <h2 className='text-xl mb-4'>Favorite Shop List</h2>
       <ul>
         {favorites.map((shop, index) => (
-          <li key={index} className="flex justify-between items-center mb-2">
+          <li key={index} className='flex justify-between items-center mb-2'>
             {shop}
             <IconButton onClick={() => handleRemoveFavorite(index)}>
-              <StarIcon className="text-yellow-500" />
+              <StarIcon className='text-yellow-500' />
             </IconButton>
           </li>
         ))}
