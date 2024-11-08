@@ -7,7 +7,7 @@ interface FavoriteListProps {
 }
 
 const FavoriteList: React.FC<FavoriteListProps> = ({ onListItemClick }) => {
-  const [favorites, setFavorites] = useState<string[]>(['丸亀', '資さんうどん', '赤いきつね']);
+  const [favorites, setFavorites] = useState<string[]>(['お店１', 'お店２', 'お店３']);
 
   const handleRemoveFavorite = async (index: number) => {
     const confirmDelete = window.confirm('お気に入りから削除しますか？');
@@ -39,10 +39,9 @@ const FavoriteList: React.FC<FavoriteListProps> = ({ onListItemClick }) => {
     }
   };
 
-
   return (
     <div id='Favoritelist-content' className="w-full max-w-md">
-      <h2 className='text-xl mb-4'>Favorite Shop List</h2>
+      <h2 className='text-xl mb-4 mr-28'>Favorite Shop List</h2>
       <List>
         {favorites.map((shop, index) => (
           <ListItem

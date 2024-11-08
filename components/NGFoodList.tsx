@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 const NGList = () => {
-  const [items, setItems] = useState<string[]>(['トマト', 'きゅうり']);
+  const [items, setItems] = useState<string[]>(['牛肉', '海老']);
   const [newItem, setNewItem] = useState('');
 
   const handleAddItem = async () => {
