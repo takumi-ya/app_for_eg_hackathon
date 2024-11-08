@@ -7,9 +7,12 @@ const FavoriteList = () => {
   const [favorites, setFavorites] = useState<string[]>(['丸亀', '資さんうどん', '赤いきつね']);
 
   const handleRemoveFavorite = async (index: number) => {
-    const updatedFavorites = favorites.filter((_, i) => i !== index);
-    setFavorites(updatedFavorites);
-    await sendDataToBackend(updatedFavorites);
+    const confirmDelete = window.confirm('お気に入りから削除しますか？');
+    if (confirmDelete) {
+      const updatedFavorites = favorites.filter((_, i) => i !== index);
+      setFavorites(updatedFavorites);
+      await sendDataToBackend(updatedFavorites);
+    }
   };
 
   const sendDataToBackend = async (updatedFavorites: string[]) => {
