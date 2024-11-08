@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 
 const users = [
   {email: 'apple', password: 'swift',username:'Appleさん'},
+  {email: 'shop', password: 'shop',username:'shop'},
 ]
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
