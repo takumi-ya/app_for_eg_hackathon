@@ -21,7 +21,7 @@ interface MenuDrawerProps {
 
 const MenuDrawer: React.FC<MenuDrawerProps> = ({ isDrawerOpen, toggleDrawer }) => {
   return (
-    <Drawer anchor="right" open={isDrawerOpen} onClose={toggleDrawer(false)}>
+    <Drawer anchor="right" open={isDrawerOpen} onClose={toggleDrawer(false)} sx={{ width: '300px' }}>
       <MenuContainer as="div">
         <Box display="flex" justifyContent="center" mb={2}>
           <Box

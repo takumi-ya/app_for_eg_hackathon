@@ -1,5 +1,7 @@
 'use client';
+import { IconButton } from '@mui/material';
 import React, { useState } from 'react';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const NGList = () => {
   const [items, setItems] = useState<string[]>(['トマト', 'きゅうり']);
@@ -42,7 +44,7 @@ const NGList = () => {
   };
 
   return (
-    <div id='NGlist-content'>
+    <div id='NGlist-content' className='w-full max-w-md'>
       <h2 className='text-xl mb-4'>NG Food List</h2>
       <div className='mb-4'>
         <input
@@ -63,12 +65,9 @@ const NGList = () => {
         {items.map((item, index) => (
           <li key={index} className='flex justify-between items-center mb-2'>
             {item}
-            <button
-              onClick={() => handleDeleteItem(index)}
-              className='bg-red-500 text-white p-1 rounded'
-            >
-              Delete
-            </button>
+            <IconButton>
+              <DeleteIcon onClick={() => handleDeleteItem(index)} />
+            </IconButton>
           </li>
         ))}
       </ul>

@@ -11,14 +11,27 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 
 import NGFoodList from './NGFoodList';
 import FavoriteList from './FavoriteList';
+import ShopModal from '../components/ShopModal';
 
 const UserPage = () => {
   const { username } = useUser();
   const [value, setValue] = useState(0);
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [selectedShop, setSelectedShop] = useState<string | null>(null);
   const router = useRouter();
 
   const handleLoginClick = () => {
     router.push('/login');
+  };
+
+  const handleListItemClick = (shop: string) => {
+    setSelectedShop(shop);
+    setModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setModalOpen(false);
+    setSelectedShop(null);
   };
 
   return (
@@ -36,10 +49,11 @@ const UserPage = () => {
         )}
       </div>
 
+    {username && username !== 'shop' && (
       <div className="mb-4 w-full max-w-md">
         <Box sx={{ width: '100%' }}>
           {value === 0 && <NGFoodList />}
-          {value === 1 && <FavoriteList />}
+          {value === 1 && <FavoriteList onListItemClick={handleListItemClick}/>}
           <BottomNavigation
             showLabels
             value={value}
@@ -52,6 +66,9 @@ const UserPage = () => {
           </BottomNavigation>
         </Box>
       </div>
+    )}
+
+      <ShopModal isOpen={isModalOpen} handleClose={handleCloseModal} shop={selectedShop} />
     </div>
   );
 };
