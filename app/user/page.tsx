@@ -45,8 +45,8 @@ export default function UserPage() {
         )}
       </div>
 
-      <div className='mb-4'>
-        <Box sx={{ width: 500 }}>
+      <div id='bottom-navigation' className='mb-4'>
+        <Box sx={{ width: '100%' }}>
         {value === 0 && <NGFoodList />}
         {value === 1 && <FavoriteList />}
         <BottomNavigation
