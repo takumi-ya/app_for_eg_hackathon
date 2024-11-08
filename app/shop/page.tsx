@@ -1,11 +1,13 @@
 "use client";
 import React from "react";
-import Link from "next/link";
+import { useRouter } from 'next/navigation';
+import { Router } from "next/router";
 
 export default function HomePage() {
+  const router = useRouter();
 
   const goToShopInfo = () => {
-    window.location.href = "/shopinfo";
+    router.push('/shopinfo');
   };
 
   return (
