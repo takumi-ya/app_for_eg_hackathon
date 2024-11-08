@@ -5,6 +5,7 @@ import Header from '@/components/Header';
 import { Box, useMediaQuery } from '@mui/material';
 import React, { useState } from 'react';
 import { UserProvider } from '../context/UserContext';
+import './globals.css';
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isDrawerOpen, setDrawerOpen] = useState(false);
