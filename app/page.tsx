@@ -1,6 +1,6 @@
 'use client';
 
-import { Clear, Search, Star } from '@mui/icons-material';
+import { Clear, Padding, Search, Star } from '@mui/icons-material';
 import {
   Box,
   Card,
@@ -18,10 +18,13 @@ import ShopModal from '../components/ShopModal';
 
 export default function MainPage() {
   const [searchQuery, setSearchQuery] = useState('');
+  const [selectedShop, setSelectedShop] = useState<string | null>(null);
+const [isModalOpen, setModalOpen] = useState(false);
+  
   const items = [
-    { id: 1, title: 'Item 1', image: '/path/to/image1.jpg' },
-    { id: 2, title: 'Item 2', image: '/path/to/image2.jpg' },
-    { id: 3, title: 'Item 3', image: '/path/to/image3.jpg' },
+    { id: 1, title: 'お店１', image: '/path/to/image1.jpg' },
+    { id: 2, title: 'お店２', image: '/path/to/image2.jpg' },
+    { id: 3, title: 'お店３', image: '/path/to/image3.jpg' },
     // 必要に応じてアイテムを追加
   ];
 
@@ -29,11 +32,18 @@ export default function MainPage() {
     setSearchQuery('');
   };
 
+  const handleCardClick = (shop: string) => {
+    setSelectedShop(shop);
+    setModalOpen(true);
+  };
+  
+  const handleCloseModal = () => {
+    setModalOpen(false);
+    setSelectedShop(null);
+  }; 
+
   return (
-    <Container sx={{ padding: '20px' }}>
-      <Typography variant="h4" gutterBottom>
-        アイテムリスト
-      </Typography>
+    <Container sx={{padding:'30px'}}>
 
       <Box sx={{ display: 'flex', alignItems: 'center', marginBottom: 2 }}>
         <Input
@@ -51,7 +61,7 @@ export default function MainPage() {
               </InputAdornment>
             )
           }
-          placeholder="Input text"
+          placeholder="Enter what you want to eat"
           fullWidth
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
@@ -60,7 +70,12 @@ export default function MainPage() {
 
       <Stack spacing={2}>
         {items.map((item) => (
-          <Card key={item.id} sx={{ height: 300, display: 'flex', flexDirection: 'column' }}>
+          <Card
+            key={item.id}
+            sx={{ height: 300, display: 'flex', flexDirection: 'column' }}
+            onClick={() => handleCardClick(item.title)}
+            >
+            
             <CardMedia
               component="img"
               sx={{ height: 'calc(100% - 80px)', marginBottom: '10px' }} // 画像の高さをCard全体からCardContentの高さを引いた値に調整
@@ -80,6 +95,8 @@ export default function MainPage() {
           </Card>
         ))}
       </Stack>
+
+      <ShopModal isOpen={isModalOpen} handleClose={handleCloseModal} shop={selectedShop} />
     </Container>
   );
 }
