@@ -29,7 +29,8 @@ export default function LoginPage() {
 
       const data = await response.json();
       console.log('ログイン成功:', data);
-      router.push('/');
+      setUsername(data.user.username);
+      router.push('/user');
 
     } catch (error) {
       if (error instanceof Error) {

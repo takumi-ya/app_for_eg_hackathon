@@ -1,6 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import { useUser } from '../../context/UserContext';
+import { useRouter } from 'next/navigation';
 
 import Box from '@mui/material/Box';
 import BottomNavigation from '@mui/material/BottomNavigation';
@@ -16,6 +17,11 @@ export default function UserPage() {
 
   const { username } = useUser();
   const [value, setValue] = React.useState(0);
+  const router = useRouter();
+
+  const handleLoginClick = () => {
+    router.push('/login');
+  };
 
   return (
     <div id="userpage" className="min-h-screen flex flex-col items-center justify-center">
@@ -27,7 +33,16 @@ export default function UserPage() {
         </svg>
       </div>
       <div id="username" className="mb-4">
-        <h1 className="text-1xl">{username === null ?  username : 'ログイン'}</h1>
+        {username ? (
+          <p>{username}</p>
+        ) : (
+          <button
+            onClick={handleLoginClick}
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          >
+            ログイン
+          </button>
+        )}
       </div>
 
       <div className="mb-4">

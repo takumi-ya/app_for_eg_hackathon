@@ -1,17 +1,23 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
+const users = [
+  {email: 'apple', password: 'swift',username:'Appleさん'},
+]
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
     console.log('リクエスト受信:', req.body);
     
     const { email, password } = req.body;
-    if (email === 'apple' && password === 'swift') {
-      res.status(200).json({ message: 'ログイン成功' });
+    const user = users.find(u => u.email === email && u.password === password);
+
+    if (user) {
+      res.status(200).json({ message: 'ログイン成功', user});
     } else {
       res.status(401).json({ message: 'ユーザー名またはパスワードが間違っています' });
     }
     // try {
-    //   const response = await fetch('http://your-ruby-backend/login', {
+    //   const response = await fetch('API', {
     //     method: 'POST',
     //     headers: {
     //       'Content-Type': 'application/json',
