@@ -25,7 +25,7 @@ export default function Home() {
 
   const addMenu = () => {
     // Add menu to database
-    router.push('/shop');
+    router.push('/menulist');
   }
 
   return (

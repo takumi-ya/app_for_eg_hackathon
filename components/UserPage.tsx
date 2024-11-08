@@ -49,6 +49,7 @@ const UserPage = () => {
         )}
       </div>
 
+    {username && username !== 'shop' && (
       <div className="mb-4 w-full max-w-md">
         <Box sx={{ width: '100%' }}>
           {value === 0 && <NGFoodList />}
@@ -65,6 +66,7 @@ const UserPage = () => {
           </BottomNavigation>
         </Box>
       </div>
+    )}
 
       <ShopModal isOpen={isModalOpen} handleClose={handleCloseModal} shop={selectedShop} />
     </div>
