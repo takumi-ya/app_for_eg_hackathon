@@ -1,6 +1,6 @@
 'use client';
 
-import { Clear, Padding, Search, Star } from '@mui/icons-material';
+import { Clear, Search, Star } from '@mui/icons-material';
 import {
   Box,
   Card,
