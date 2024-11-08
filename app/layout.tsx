@@ -4,6 +4,8 @@ import MenuDrawer from '@/components/DrawerMenu';
 import Header from '@/components/Header';
 import { Box, useMediaQuery } from '@mui/material';
 import React, { useState } from 'react';
+import { UserProvider } from '../context/UserContext';
+import './globals.css';
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isDrawerOpen, setDrawerOpen] = useState(false);
@@ -22,11 +24,13 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <html>
       <body>
+        <UserProvider>
         <Header onIconClick={() => setDrawerOpen(true)} />
         <MenuDrawer isDrawerOpen={isDrawerOpen} toggleDrawer={() => toggleDrawer(false)} />
         <Box component="main" mt={isMobile ? 8 : 12} pt={8}>
           {children}
         </Box>
+        </UserProvider>
       </body>
     </html>
   );
