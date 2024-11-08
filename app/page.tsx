@@ -14,6 +14,7 @@ import {
   Typography,
 } from '@mui/material';
 import { useState } from 'react';
+import ShopModal from '../components/ShopModal';
 
 export default function MainPage() {
   const [searchQuery, setSearchQuery] = useState('');

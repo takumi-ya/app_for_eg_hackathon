@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
-import IconButton from '@mui/material/IconButton';
+import { List, ListItem, ListItemText, IconButton, Modal, Box, Typography } from '@mui/material';
 import StarIcon from '@mui/icons-material/Star';
-import StarBorderIcon from '@mui/icons-material/StarBorder';
 
-const FavoriteList = () => {
+interface FavoriteListProps {
+  onListItemClick: (shop: string) => void;
+}
+
+const FavoriteList: React.FC<FavoriteListProps> = ({ onListItemClick }) => {
   const [favorites, setFavorites] = useState<string[]>(['丸亀', '資さんうどん', '赤いきつね']);
 
   const handleRemoveFavorite = async (index: number) => {
@@ -36,19 +39,30 @@ const FavoriteList = () => {
     }
   };
 
+
   return (
-    <div id='Favoritelist-content' className="w-72 max-w-md">
+    <div id='Favoritelist-content' className="w-full max-w-md">
       <h2 className='text-xl mb-4'>Favorite Shop List</h2>
-      <ul>
+      <List>
         {favorites.map((shop, index) => (
-          <li key={index} className='flex justify-between items-center mb-2'>
-            {shop}
-            <IconButton onClick={() => handleRemoveFavorite(index)}>
-              <StarIcon className='text-yellow-500' />
+          <ListItem
+            key={index}
+            onClick={() => onListItemClick(shop)}
+            sx={{
+              cursor: 'pointer',
+              '&:hover': {
+                backgroundColor: 'rgba(0, 0, 0, 0.08)',
+              },
+            }}
+            className="flex justify-between items-center mb-2"
+            >
+            <ListItemText primary={shop} />
+            <IconButton onClick={(e) => { e.stopPropagation(); handleRemoveFavorite(index); }}>
+              <StarIcon className="text-yellow-500" />
             </IconButton>
-          </li>
+          </ListItem>
         ))}
-      </ul>
+      </List>
     </div>
   );
 };
