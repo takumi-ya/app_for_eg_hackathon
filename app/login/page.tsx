@@ -30,7 +30,11 @@ export default function LoginPage() {
       const data = await response.json();
       console.log('ログイン成功:', data);
       setUsername(data.user.username);
-      router.push('/');
+      if(email === 'shop'){
+        router.push('/shop');
+      }else{
+        router.push('/');
+      }
 
     } catch (error) {
       if (error instanceof Error) {
